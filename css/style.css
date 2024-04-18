@@ -1,0 +1,202 @@
+body {
+  margin: 0;
+}
+
+/*
+.topnav class selects HTML elements with the class "topnav" and applies specific styling to them. 
+In CSS, the position property determines how an element is positioned within its containing element. 
+The position: absolute; rule specifies that the navigation bar should be positioned absolutely relative 
+to its nearest positioned ancestor. Other position options are static, relative, and fixed.
+Top, left, right, sets the position of the element from each direction. Setting left and right to 0 means
+the navbar will span the entire width of the page.
+*/
+.topnav {
+  background-color: #922b26;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.topbuttonsleft {
+  font-weight: bold;
+  font-family: 'Merriweather', serif;
+  padding: 8px;
+  color: white;
+  font-size: 20px;
+  background: none;
+  border: none;
+}
+
+/*
+.topbuttonsleft:hover { ... } applies styles to elements with the class "topbuttonsleft" when they are in a hovered state (i.e., when the mouse pointer is over them).
+cursor: pointer; changes the appearance of the mouse cursor when hovering over the elements with the class "topbuttonsleft" to a pointer.
+This is typically used to indicate clickable elements.
+*/
+.topbuttonsleft:hover {
+  cursor: pointer;
+}
+
+/*
+The z-index property in CSS controls the stacking order of positioned elements. 
+It specifies the z-axis position of an element, determining whether it appears in front of or behind other elements on the page.
+Elements with a higher z-index value appear in front of elements with a lower z-index value. In this case, the element with the class "map" has a z-index of 7, 
+which means it will be displayed in front of elements with lower z-index values but behind elements with higher z-index values.
+*/
+.map {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 40px;
+  z-index: 7;
+}
+
+.sidebar {
+  border-radius: 5px;
+  position: absolute;
+  left: 22px;
+  width: 390px;
+  top: 64px;
+  bottom: 30px;
+  overflow-y: auto;
+  padding: 10px;
+  font-size: 16px;
+  z-index: 9;
+  background-color: rgba(200, 200, 200, 0.5);
+}
+
+
+/*
+Padding in CSS is the space between the content of an element and its border. 
+It adds space inside the element, pushing the content away from the edges of the element's box.
+*/
+.sidebar_content {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  padding-top: 40px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Merriweather', serif;
+  font-weight: bold;
+}
+
+/*
+.sidebar_content input targets <input> elements that are descendants of elements with the class "sidebar_content".
+*/
+.sidebar_content input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 40px;
+  right: 180px;
+  height: 22px;
+  width: 22px;
+  background-color: #eee;
+}
+
+/*
+.sidebar_content:hover .checkmark applies styles to elements with the class "checkmark" that are descendants 
+(children or further nested elements) of elements with the class "sidebar_content" when the .sidebar_content elements are in a hovered state.
+*/
+.sidebar_content:hover .checkmark {
+  background-color: #ccc;
+}
+
+/*
+.checkmark:after targets pseudo-elements that are created after elements with the class "checkmark". 
+Pseudo-elements allow you to style specific parts of an element without adding extra HTML markup.
+*/
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/*
+.sidebar_content .checkmark:after changes the style of all sidebar_content after the checkmark is checked.
+*/
+.sidebar_content .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/*
+.sidebar_content input:checked targets <input> elements that are checked and are descendants of 
+elements with the class "sidebar_content". It ensures that the styling only applies when the associated <input> elements are checked.
+~ .checkmark: This part of the selector targets elements with the class "checkmark" that are siblings of the checked <input> elements. 
+The ~ combinator selects siblings that come after the checked <input> elements.
+*/
+.sidebar_content input:checked ~ .checkmark {
+  background-color: #922b26;
+}
+
+/*
+.sidebar_content input:checked targets <input> elements that are checked and are descendants of elements with the class "sidebar_content". 
+It ensures that the styling only applies when the associated <input> elements are checked.
+~ .checkmark:after: This part of the selector targets the pseudo-element ::after of elements with the class "checkmark" that are siblings of the checked <input> elements. 
+The ~ combinator selects siblings that come after the checked <input> elements.
+*/
+.sidebar_content input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.modal_button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 15px;
+  font-size: 20px;
+  z-index: 8;
+}
+
+.modal_button:hover {
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 300;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/*
+width: 80%; sets the width of the element to 80% of its containing block. 
+The containing block is typically the nearest positioned ancestor, or the initial containing block if no positioned ancestor exists.
+*/
+.modal_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%; /* Adjust width as needed */
+  height: 80%; 
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 20px;
+  font-family: 'Merriweather', serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

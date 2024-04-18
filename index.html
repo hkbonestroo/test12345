@@ -1,0 +1,67 @@
+<!-- HTML serves as the structural backbone of a webpage, defining the layout, content, 
+     and functionality. This file organizes the various components of the page such as the navigation bar, maps, 
+     sidebar, and modal, specifying how they are arranged and interact with each other. -->
+<!DOCTYPE html>
+<html>
+<!-- The head contains meta information and links to external sources.-->
+<head>
+  <!-- Meta tag for setting viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Linking external stylesheet for custom styles. This our css file where we style the webpage components in. -->
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Linking Leaflet CSS-->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+  <!-- Linking Google Fonts. This brings in the font Merriweather. Google fonts has many others to choose from. Fonts can 
+  also be brought in from your desktop.-->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel="stylesheet">
+</head>
+<!-- The body contains the content that is displayed to the user within the browser window.-->
+<body>
+  <!-- Navigation bar -->
+  <!-- A "div" creates a division or a container. In this case the class attribute set to "topnav". The class attribute allows you 
+    to apply styles or target this specific division within our CSS or JavaScript file. In this case, "topnav" is used to style
+    or position this container at the top of the webpage as a navigation bar. The div begins with <div and is closed with </div>, with
+    all the elements in between being contained within that div. -->
+  <div class="topnav">
+    <!-- Button which takes you to C2Smarter Home Page -->
+    <!-- Within the <div>, there's a <button> element. The class="topbuttonsleft" assigns the class "topbuttonsleft" to the button element. 
+      Similar to the div, this allows for styling or targeting this button within our CSS or JS file. onclick="showHome()" is an event handler attribute. 
+      It specifies a JavaScript function (showHome()) to be executed when the button is clicked. We define the function within our JS file.
+      The text "NYC Fire Stations" is the visible content of the button. This is what the user sees and interacts with on the webpage. -->
+    <button class="topbuttonsleft" onclick="showHome()">NYC Fire Stations</button>
+  </div>
+  <!-- Map container -->
+  <div id="map" class="map"></div>
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <!-- Button to show modal dialog -->
+    <button class="modal_button" onclick="showModal()">?</button>
+    <!-- Checkbox to toggle fire stations display -->
+    <!-- A <label> element is used to associate a textual label with an input element. This association is beneficial for accessibility because 
+      it provides a clear indication of what the input is for. -->
+    <label class="sidebar_content">Fire Stations:
+      <!-- An <input> element is used to create interactive controls. It allows users to enter data, select options, and 
+        perform actions. The type attribute specifies the type of control that the <input> element represents. Some common values for the type 
+        attribute includes text, password, checkbox, radio, submit button, file, or number.The <input> element with type="checkbox" creates a checkbox control. 
+        Users can click on this checkbox to toggle its checked state. When clicked, the onclick attribute calls the function showFireStations() -->
+      <input type="checkbox" id="checked" onclick="showFireStations()">
+      <!-- Spans are used for styling purposes and to apply styles to specific parts of the content. In this case, it is used to create a custom visual 
+        representation of the checkbox. The CSS associated with the "checkmark" class style this span to resemble a checkmark symbol when the 
+        checkbox is checked. -->
+      <span class="checkmark"></span>
+    </label>
+  </div>
+  <!-- Modal dialog -->
+  <div class="modal" id="modal" onclick="byeModal()">
+    <!-- Content of the modal -->
+    <label class="modal_content">This is a test help page.</label>
+  </div>
+  <!-- Leaflet JavaScript library -->
+  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+  <!-- Custom JavaScript files -->
+  <!-- fireStations.js contains the geojson of the fire stations. -->
+  <script src="js/fireStations.js"></script>
+  <!-- main.js contains our JavaScript code which controls the functionality of the website. -->
+  <script src="js/main.js"></script>
+</body>
+</html>
